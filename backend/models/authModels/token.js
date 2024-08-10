@@ -9,10 +9,6 @@ const tokenSchema = new Schema({
         ref: 'User', // Ensure the reference is the correct model name
         unique: true,
     },
-    token: {
-        type: String,
-        required: true
-    },
     createdAt: {
         type: Date,
         default: Date.now,
