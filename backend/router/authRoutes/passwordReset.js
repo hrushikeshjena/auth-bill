@@ -2,10 +2,6 @@
 
 const router = require("express").Router();
 const { User } = require("../../models/authModels/user");
-const Token = require("../../models/authModels/token");
-const crypto = require("crypto");
-const sendMail = require("../../utils/sendEmail");
-const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
 const bcrypt = require("bcrypt");
 
@@ -25,12 +21,12 @@ router.post("/", async (req, res) => {
     if (!token) {
       token = new Token({
         userId: user._id,
-        token: crypto.randomBytes(32).toString("hex"),
+      
       });
       await token.save();
     }
 
-    const url = `${process.env.BASE_URL}/password-reset/${user._id}/${token.token}`;
+    const url = `${process.env.BASE_URL}/password-reset/`;
     await sendMail(user.email, "Password Reset", url);
     res.status(200).send({ status: true, message: "Password reset link sent to your email." });
   } catch (error) {
@@ -40,7 +36,7 @@ router.post("/", async (req, res) => {
 });
 
 // Verify URL
-router.get("/:userId/:token", async (req, res) => {
+router.get("/:token", async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.params.userId });
     if (!user) return res.status(400).send({ status: false, message: "User not found." });
@@ -56,7 +52,7 @@ router.get("/:userId/:token", async (req, res) => {
 });
 
 // Reset password
-router.post("/:userId/:token", async (req, res) => {
+router.post("/:token", async (req, res) => {
   try {
     const passwordSchema = Joi.object({
       password: passwordComplexity().required().label("Password"),
@@ -69,11 +65,9 @@ router.post("/:userId/:token", async (req, res) => {
 
     const token = await Token.findOne({ userId: req.params.userId, token: req.params.token });
     if (!token) return res.status(400).send({ status: false, message: "Invalid or expired token." });
-
-    const salt = await bcrypt.genSalt(Number(process.env.SALT));
     const hashPassword = await bcrypt.hash(req.body.password, salt);
 
-    user.password = hashPassword;
+
     await user.save();
     await token.deleteOne(); // Use deleteOne() to remove the token
 
