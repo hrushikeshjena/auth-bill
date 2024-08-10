@@ -1,10 +1,7 @@
 
 
 const router = require("express").Router();
-const { User, validate } = require("../../models/authModels/user");
 const bcrypt = require("bcrypt");
-const Token = require("../../models/authModels/token");
-const sendEmail = require("../../utils/sendEmail");
 const crypto = require("crypto");
 
 // Register User and Send Verification Email
@@ -24,11 +21,10 @@ router.post("/", async (req, res) => {
 
     const token = new Token({
       userId: user._id,
-      token: crypto.randomBytes(32).toString("hex"),
     });
     await token.save();
 
-    const url = `${process.env.BASE_URL}/users/${user._id}/verify/${token.token}`;
+    const url = `${process.env.BASE_URL}/users/${._id}/verify/${token}`;
     await sendEmail(user.email, "Verify your email", url);
 
     res.status(201).send({
@@ -41,7 +37,7 @@ router.post("/", async (req, res) => {
 });
 
 // Verify User Email
-router.get("/:id/verify/:token", async (req, res) => {
+router.get("/:token", async (req, res) => {
   try {
     const { id, token } = req.params;
 
