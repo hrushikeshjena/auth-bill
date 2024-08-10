@@ -2,8 +2,6 @@ const router = require("express").Router();
 const { User } = require("../../models/authModels/user");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
-const Token = require("../../models/authModels/token");
-const sendEmail = require("../../utils/sendEmail");
 const crypto = require("crypto");
 router.post("/", async (req, res) => {
   try {
@@ -28,7 +26,7 @@ router.post("/", async (req, res) => {
           userId: user._id,
           token: crypto.randomBytes(16).toString("hex"),
         }).save();
-        const url = `${process.env.BASE_URL}users/${user._id}/verify/${token.token}`;
+        const url = `${process.env.BASE_URL}users/verify/${token}`;
         await sendEmail(user.email, "Verify your email", url);
       }
       return res
