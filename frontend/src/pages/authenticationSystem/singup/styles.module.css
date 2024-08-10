@@ -1,0 +1,200 @@
+.signup_container {
+	display: flex;
+	width: 100%;
+	min-height: 100vh;
+	background-color: #f5f5f5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 20px;
+
+}
+
+.signup_form_container {
+	display: flex;
+	overflow: hidden;
+	width: 1000px;
+	height: 650px;
+	display: flex;
+	border-radius: 10px;
+	box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
+		0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+}
+
+.left {
+	width: 50%;
+	background-color: #f9f9f9;
+	text-align: center;
+	padding: 20px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+}
+
+.left h1 {
+	margin-top: 0;
+	color: white;
+	font-size: 35px;
+	align-self: center;
+}
+
+.right {
+	width: 50%;
+	flex: 1;
+	padding: 40px;
+	background-color: white;
+	
+}
+
+.form_container {
+	align-items: center;
+	max-width: 400px;
+}
+
+.form_container h1 {
+	font-size: 40px;
+	margin-top: 0;
+}
+
+.welcome_back_image {
+	width: 150%;
+	max-width: 200px;
+	margin-bottom: 20px;
+  }
+.input {
+	outline: none;
+	border: none;
+	width: 350px;
+	border-radius: 10px;
+	background-color: #edf5f3;
+	margin: 5px 0;
+	font-size: 14px;
+}
+
+.error_msg, .success_msg {
+	width: 370px;
+	padding: 15px;
+	margin: 5px 0;
+	font-size: 14px;
+	background-color: #f34646;
+	color: white;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.white_btn,
+.green_btn {
+	border: none;
+	outline: none;
+	padding: 12px 0;
+	background-color: white;
+	border-radius: 20px;
+	width: 180px;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+
+  
+ 
+  
+  .card {
+	padding: 0;
+	border-radius: 10px;
+  }
+  
+  
+  
+  .welcome_back_image {
+	width: 150%;
+	max-width: 200px;
+	margin-bottom: 20px;
+  }
+  
+
+  
+  .form_container {
+	max-width: 400px;
+	margin: auto;
+  }
+  
+  .green_btn {
+	width: 100%;
+	background-color: #52c41a;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  }
+  
+  .green_btn:hover {
+	background-color: #389e0d;
+  }
+  
+
+  
+
+
+  .login_container {
+	width: 100%;
+	min-height: 100vh;
+	background-color: #f5f5f5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 20px;
+  }
+  
+  .login_form_container {
+	width: 800px;
+	display: flex;
+	border-radius: 10px;
+	box-shadow: 0 3px 3px -2px rgb(0 0 0 / 20%),
+				0 3px 4px 0 rgb(0 0 0 / 14%),
+				0 1px 8px 0 rgb(0 0 0 / 12%);
+	overflow: hidden;
+  }
+  
+
+  
+  .white_btn {
+	background-color: #fff;
+	color: #52c41a;
+	border: 1px solid #52c41a;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .white_btn:hover {
+	background-color: #52c41a;
+	color: #fff;
+  }
+  
+  .error_msg,
+  .success_msg {
+	width: 370px;
+	padding: 15px;
+	margin: 5px 0;
+	font-size: 14px;
+	border-radius: 5px;
+	text-align: center;
+  }
+  
+  .error_msg {
+	background-color: #f34646;
+	color: white;
+  }
+  
+  .success_msg {
+	background-color: green;
+	color: white;
+  }
+  
